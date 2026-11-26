@@ -12,6 +12,8 @@ class Blackjack extends JS_CG_2D_API {
     this.mensagem = "Escolha a aposta e clique em Jogar.";
     this.carregarImagens();
     this.criarBotoes();
+    EfeitosSonoros.carregarSom("embaralhar", "sons/embaralhar.mp3");
+    EfeitosSonoros.carregarSom("cartaCair", "sons/carta_caindo.mp3");
   }
 
   carregarImagens() {
@@ -72,6 +74,7 @@ class Blackjack extends JS_CG_2D_API {
   darCarta(mao) {
     let posicao = Math.floor(Math.random() * this.baralho.length); //puxa uma carta
     let carta = this.baralho.splice(posicao, 1)[0]; //remove a carta do baralho
+    EfeitosSonoros.tocarSom("cartaCair", false, true);
     mao.push(carta);
   }
 
